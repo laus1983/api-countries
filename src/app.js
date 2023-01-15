@@ -11,8 +11,6 @@ const server = express();
 
 server.name = "API";
 
-// server.set("port", process.env.PORT || 3001);
-
 server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
