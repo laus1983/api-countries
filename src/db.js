@@ -24,13 +24,21 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_URI } = process.env;
 //   native: false,
 // });
 
+// const sequelize = new Sequelize(
+//   "luisqjcv_apicountries",
+//   "luisqjcv_apiadmin",
+//   "pFzSbr53VZu$",
+//   {
+//     host: "luisurdaneta.com",
+//     dialect: "mysql",
+//   }
+// );
+
 const sequelize = new Sequelize(
-  "luisqjcv_apicountries",
-  "luisqjcv_apiadmin",
-  "pFzSbr53VZu$",
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`,
   {
-    host: "luisurdaneta.com",
-    dialect: "mysql",
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   }
 );
 
