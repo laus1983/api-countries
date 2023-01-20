@@ -2,45 +2,21 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_URI } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 // const sequelize = new Sequelize(
-//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/luisqjcv_apicountries`,
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/${DB_NAME}`,
 //   {
 //     logging: false, // set to console.log to see the raw SQL queries
 //     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 //   }
 // );
 
-// const sequelize = new Sequelize(DB_URI, {
-//   dialect: "postgresql",
-//   dialectOptions: {
-//     ssl: {
-//       require: true,
-//       rejectUnauthorized: false,
-//     },
-//   },
-//   logging: false,
-//   native: false,
-// });
-
-// const sequelize = new Sequelize(
-//   "luisqjcv_apicountries",
-//   "luisqjcv_apiadmin",
-//   "pFzSbr53VZu$",
-//   {
-//     host: "luisurdaneta.com",
-//     dialect: "mysql",
-//   }
-// );
-
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`,
-  {
-    logging: false, // set to console.log to see the raw SQL queries
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  }
-);
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+  host: DB_HOST,
+  dialect:
+    "mysql" /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */,
+});
 
 const basename = path.basename(__filename);
 
