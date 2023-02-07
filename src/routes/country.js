@@ -13,7 +13,7 @@ router.get("/", async (req, res, next) => {
         const countries = await Country.findAll({
           where: {
             nameSearch: {
-              [Op.iLike]: `%${name}%`,
+              [Op.like]: `%${name}%`,
             },
           },
         });
@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
           const countries = await Country.findAll({
             where: {
               nameSearch: {
-                [Op.iLike]: `%${name}%`,
+                [Op.like]: `%${name}%`,
               },
             },
           });
@@ -38,7 +38,7 @@ router.get("/", async (req, res, next) => {
         const countries = await Country.findAll({
           where: {
             nameEn: {
-              [Op.iLike]: `%${name}%`,
+              [Op.like]: `%${name}%`,
             },
           },
         });
@@ -49,7 +49,7 @@ router.get("/", async (req, res, next) => {
           const countries = await Country.findAll({
             where: {
               nameEn: {
-                [Op.iLike]: `%${name}%`,
+                [Op.like]: `%${name}%`,
               },
             },
           });

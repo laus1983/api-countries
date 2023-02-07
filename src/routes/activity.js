@@ -37,7 +37,7 @@ router.post("/create", async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res, next) => {
+router.get("/see", async (req, res, next) => {
   try {
     const activities = await Activity.findAll({
       include: { model: Country },
